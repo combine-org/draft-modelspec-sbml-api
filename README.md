@@ -19,9 +19,6 @@ mkvirtualenv modelspec_sbmlapi --python=/home/ccaervi/mambaforge/envs/py310/bin/
 deactivate
 workon modelspec_sbmlapi
 
-#download the example neuroml2 modelspec api
-wget https://github.com/ModECI/modelspec/raw/development/examples/neuroml2/neuroml2_spec.py
-
 #download and install modelspec
 wget https://github.com/ModECI/modelspec/archive/refs/tags/v0.3.0.tar.gz
 tar -xf v0.3.0.tar.gz
