@@ -13,6 +13,51 @@ from modelspec.base_types import Base
 from typing import List
 
 @modelspec.define
+class Rule(Base):
+    """
+    A rule, either algebraic, assignment or rate
+
+    Args:
+        math: MathML optional
+        id: SId optional
+        sboTerm: sboTerm optional
+    """
+
+    symbol: str = field(validator=instance_of(str))
+    id: str = field(default=None,validator=optional(instance_of(str)))
+    math: str = field(default=None,validator=optional(instance_of(str)))
+    sboTerm: str = field(default=None, validator=optional(instance_of(str)))
+
+@modelspec.define
+class AlgebraicRule(Rule):
+    """
+    An algebraic rule
+    """
+
+@modelspec.define
+class AssignmentRule(Rule):
+    """
+    An assignment rule
+
+    Args:
+        variable: SIdRef required
+    """
+
+    symbol: str = field(validator=instance_of(str))
+
+@modelspec.define
+class RateRule(Rule):
+    """
+    A rate rule
+
+    Args:
+        variable: SIdRef required
+    """
+
+    symbol: str = field(validator=instance_of(str))
+
+
+@modelspec.define
 class InitialAssignment(Base):
     """
     An initial assignment
@@ -195,14 +240,14 @@ class Model(Base):
     listOfSpecies:             List[Species]            = field(factory=list)
     listOfParameters:          List[Parameter]          = field(factory=list)
     listOfInitialAssignments:  List[InitialAssignment]  = field(factory=list)
-    # ListOfRules
+    listOfRules:               List[Rule]               = field(factory=list)
     # ListOfConstraints
     # ListOfReactions
     # ListOfEvents        
 
 
 @modelspec.define
-class SBML(Base):
+class SBML(SBase):
     """
     The top-level SBML container implementing SBML 3.2.
     See sbml.level-3.version-2.core.release-2.pdf section 4.
@@ -230,6 +275,28 @@ class SBML(Base):
 
     model: Model = field(default=None, validator=optional(instance_of(Model)))
 
+@modelspec.define
+class SBase(Base):
+    """
+    Abstract base class for all SBML objects
+
+    Args:
+        id:      SId optional
+        name:    string optional
+        metaid:  XML ID optional
+        sboTerm: SBOTerm optional
+
+        notes:      XHTML 1.0 optional
+        annotation: XML content optional
+    """
+
+    id:      str = field(default=None,validator=optional(instance_of(str)))
+    name:    str = field(default=None,validator=optional(instance_of(str)))
+    metaid:  str = field(default=None,validator=optional(instance_of(str)))
+    sboTerm: str = field(default=None,validator=optional(instance_of(str)))
+
+    notes:      str = field(default=None,validator=optional(instance_of(str)))
+    annotation: str = field(default=None,validator=optional(instance_of(str)))
 
 if __name__ == "__main__":
     sbml_doc = SBML(id="sbml_example")
