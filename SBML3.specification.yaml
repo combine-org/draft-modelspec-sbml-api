@@ -1,0 +1,215 @@
+SBML:
+    definition: 'The top-level SBML container implementing SBML 3.2. See sbml.level-3.version-2.core.release-2.pdf
+        section 4.
+
+        http://www.sbml.org/sbml/level3/version2/core'
+    allowed_parameters:
+        id:
+            type: str
+            description: '     SId optional'
+        name:
+            type: str
+            description: '   string optional'
+        metaid:
+            type: str
+            description: ' XML ID optional'
+        sboTerm:
+            type: str
+            description: SBOTerm optional
+        notes:
+            type: str
+            description: '     XHTML 1.0 optional'
+        annotation:
+            type: str
+            description: XML content optional
+        level:
+            type: str
+            description: '  SBML level used   (should be fixed to 3)'
+        version:
+            type: str
+            description: SBML version used (should be fixed to 2)
+        model:
+            type: Model
+            description: '  Optional model'
+Model:
+    definition: The model
+    allowed_parameters:
+        id:
+            type: str
+            description: '              The id of the model'
+        sboTerm:
+            type: str
+            description: '         Optional sboTerm'
+        substanceUnits:
+            type: str
+            description: '  Optional substance units'
+        timeUnits:
+            type: str
+            description: '       Optional time units'
+        volumeUnits:
+            type: str
+            description: '     Optional volume units'
+        areaUnits:
+            type: str
+            description: '       Optional area units'
+        lengthUnits:
+            type: str
+            description: '     Optional length units'
+        extentUnits:
+            type: str
+            description: '     Optional extent units'
+        conversionFactor:
+            type: str
+            description: Optional conversion factor
+    allowed_children:
+        listOfFunctionDefinitions:
+            type: List
+            description: ''
+        listOfUnitDefinitions:
+            type: List
+            description: ''
+        listOfCompartments:
+            type: List
+            description: ''
+        listOfSpecies:
+            type: List
+            description: ''
+        listOfParameters:
+            type: List
+            description: ''
+        listOfInitialAssignments:
+            type: List
+            description: ''
+        listOfRules:
+            type: List
+            description: ''
+FunctionDefinition:
+    definition: A function definition using MathML
+    allowed_parameters:
+        id:
+            type: str
+            description: The id of the function
+        math:
+            type: str
+            description: Optional function definition using MathML http://www.w3.org/1998/Math/MathML
+        sboTerm:
+            type: str
+            description: Optional sboTerm
+UnitDefinition:
+    definition: A unit definition
+    allowed_parameters:
+        id:
+            type: str
+            description: The id of the unit definition
+    allowed_children:
+        listOfUnits:
+            type: List
+            description: List of units used to compose the definition
+Unit:
+    definition: A unit used to compose a unit definition. unit = (multiplier x 10^scale
+        x kind)^exponent
+    allowed_parameters:
+        kind:
+            type: str
+            description: base unit (base or derived SI units only, see Table 2 of
+                the SBML spec)
+        exponent:
+            type: str
+            description: double
+        scale:
+            type: str
+            description: integer
+        multiplier:
+            type: str
+            description: double
+Compartment:
+    definition: A compartment
+    allowed_parameters:
+        id:
+            type: str
+            description: The id of the compartment
+        constant:
+            type: bool
+            description: whether size is fixed
+        sboTerm:
+            type: str
+            description: optional sboTerm
+        spatialDimensions:
+            type: float
+            description: eg 3 for three dimensional space etc
+        size:
+            type: float
+            description: initial size of compartment
+        units:
+            type: str
+            description: units being used to define the compartment's size
+Species:
+    definition: 'A species: entities of the same kind participating in reactions within
+        a specific compartment'
+    allowed_parameters:
+        id:
+            type: str
+            description: The id of the species
+        compartment:
+            type: str
+            description: SIdRef
+        hasOnlySubstanceUnits:
+            type: bool
+            description: boolean
+        boundaryCondition:
+            type: bool
+            description: boolean
+        constant:
+            type: bool
+            description: boolean
+        initialAmount:
+            type: float
+            description: double optional
+        initialConcentration:
+            type: float
+            description: double optional
+        substanceUnits:
+            type: str
+            description: UnitSIdRef optional
+        conversionFactor:
+            type: str
+            description: SIdRef optional
+        sboTerm:
+            type: str
+            description: optional sboTerm
+Parameter:
+    definition: A parameter
+    allowed_parameters:
+        id:
+            type: str
+            description: SId required
+        constant:
+            type: bool
+            description: boolean
+        sboTerm:
+            type: str
+            description: optional sboTerm
+        value:
+            type: float
+            description: double optional
+        units:
+            type: str
+            description: UnitSIdRef optional
+InitialAssignment:
+    definition: An initial assignment
+    allowed_parameters:
+        symbol:
+            type: str
+            description: SIdRef required
+        id:
+            type: str
+            description: SId optional
+        math:
+            type: str
+            description: MathML optional
+        sboTerm:
+            type: str
+            description: sboTerm optional
+Rule:
+    definition: A rule, either algebraic, assignment or rate
+    allowed_parameters: {}

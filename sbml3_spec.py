@@ -13,20 +13,38 @@ from modelspec.base_types import Base
 from typing import List
 
 @modelspec.define
-class Rule(Base):
+class SBase(Base):
+    """
+    Abstract base class for all SBML objects
+
+    Args:
+        id:      SId optional
+        name:    string optional
+        metaid:  XML ID optional
+        sboTerm: SBOTerm optional
+
+        notes:      XHTML 1.0 optional
+        annotation: XML content optional
+    """
+
+    id:      str = field(default=None,validator=optional(instance_of(str)))
+    name:    str = field(default=None,validator=optional(instance_of(str)))
+    metaid:  str = field(default=None,validator=optional(instance_of(str)))
+    sboTerm: str = field(default=None,validator=optional(instance_of(str)))
+
+    notes:      str = field(default=None,validator=optional(instance_of(str)))
+    annotation: str = field(default=None,validator=optional(instance_of(str)))
+
+#@modelspec.define
+class Rule(SBase):
     """
     A rule, either algebraic, assignment or rate
 
     Args:
         math: MathML optional
-        id: SId optional
-        sboTerm: sboTerm optional
     """
 
-    symbol: str = field(validator=instance_of(str))
-    id: str = field(default=None,validator=optional(instance_of(str)))
     math: str = field(default=None,validator=optional(instance_of(str)))
-    sboTerm: str = field(default=None, validator=optional(instance_of(str)))
 
 @modelspec.define
 class AlgebraicRule(Rule):
@@ -43,7 +61,7 @@ class AssignmentRule(Rule):
         variable: SIdRef required
     """
 
-    symbol: str = field(validator=instance_of(str))
+    variable: str = field(validator=instance_of(str))
 
 @modelspec.define
 class RateRule(Rule):
@@ -54,56 +72,46 @@ class RateRule(Rule):
         variable: SIdRef required
     """
 
-    symbol: str = field(validator=instance_of(str))
+    variable: str = field(validator=instance_of(str))
 
 
 @modelspec.define
-class InitialAssignment(Base):
+class InitialAssignment(SBase):
     """
     An initial assignment
 
     Args:
         symbol: SIdRef required
         math: MathML optional
-        id: SId optional
-        sboTerm: sboTerm optional
     """
 
     symbol: str = field(validator=instance_of(str))
-    id: str = field(default=None,validator=optional(instance_of(str)))
     math: str = field(default=None,validator=optional(instance_of(str)))
-    sboTerm: str = field(default=None, validator=optional(instance_of(str)))
 
 
 @modelspec.define
-class Parameter(Base):
+class Parameter(SBase):
     """
     A parameter
 
     Args:
-        id: SId required
         value: double optional
         units: UnitSIdRef optional
         constant: boolean
-        sboTerm: optional sboTerm
     """
 
-    id: str = field(validator=instance_of(str))
     constant: bool = field(validator=instance_of(bool))
-
-    sboTerm: str = field(default=None, validator=optional(instance_of(str)))
 
     value: float = field(default=None,validator=optional(instance_of(float)))
     units: str = field(default=None,validator=optional(instance_of(str)))
 
 
 @modelspec.define
-class Species(Base):
+class Species(SBase):
     """
     A species: entities of the same kind participating in reactions within a specific compartment
 
     Args:
-        id: The id of the species
         compartment: SIdRef
         initialAmount: double optional
         initialConcentration: double optional
@@ -112,10 +120,8 @@ class Species(Base):
         boundaryCondition: boolean
         constant: boolean
         conversionFactor: SIdRef optional
-        sboTerm: optional sboTerm
     """
 
-    id: str = field(validator=instance_of(str))
     compartment: str = field(validator=instance_of(str))
     hasOnlySubstanceUnits: bool = field(validator=instance_of(bool))
     boundaryCondition: bool = field(validator=instance_of(bool))
@@ -126,36 +132,27 @@ class Species(Base):
     substanceUnits: str = field(default=None, validator=optional(instance_of(str)))
     conversionFactor: str = field(default=None, validator=optional(instance_of(str)))
 
-    sboTerm: str = field(default=None, validator=optional(instance_of(str)))
-
-
 
 @modelspec.define
-class Compartment(Base):
+class Compartment(SBase):
     """
     A compartment
 
     Args:
-        id: The id of the compartment
-
         spatialDimensions: eg 3 for three dimensional space etc
         size: initial size of compartment
         units: units being used to define the compartment's size
         constant: whether size is fixed
-        sboTerm: optional sboTerm
     """
 
-    id: str = field(validator=instance_of(str))
     constant: bool = field(validator=instance_of(bool))
-
-    sboTerm: str = field(default=None, validator=optional(instance_of(str)))
 
     spatialDimensions: float = field(default=None,validator=optional(instance_of(float)))
     size: float = field(default=None,validator=optional(instance_of(float)))
     units: str = field(default=None,validator=optional(instance_of(str)))
 
 @modelspec.define
-class Unit(Base):
+class Unit(SBase):
     """
     A unit used to compose a unit definition.
     unit = (multiplier x 10^scale x kind)^exponent
@@ -173,45 +170,35 @@ class Unit(Base):
     multiplier: str = field(default=1.0, validator=instance_of(float))
 
 @modelspec.define
-class UnitDefinition(Base):
+class UnitDefinition(SBase):
     """
     A unit definition
 
     Args:
-        id: The id of the unit definition
-
         listOfUnits: List of units used to compose the definition
     """
-
-    id: str = field(validator=instance_of(str))
 
     listOfUnits: List[Unit] = field(factory=list)
 
 
 @modelspec.define
-class FunctionDefinition(Base):
+class FunctionDefinition(SBase):
     """
     A function definition using MathML
 
     Args:
-        id: The id of the function
         math: Optional function definition using MathML http://www.w3.org/1998/Math/MathML
-        sboTerm: Optional sboTerm
     """
 
-    id: str = field(validator=instance_of(str))
     math: str = field(default=None, validator=optional(instance_of(str)))
-    sboTerm: str = field(default=None, validator=optional(instance_of(str)))
 
 
 @modelspec.define
-class Model(Base):
+class Model(SBase):
     """
     The model
 
     Args:
-        id:               The id of the model
-        sboTerm:          Optional sboTerm
         substanceUnits:   Optional substance units
         timeUnits:        Optional time units
         volumeUnits:      Optional volume units
@@ -220,11 +207,6 @@ class Model(Base):
         extentUnits:      Optional extent units
         conversionFactor: Optional conversion factor
     """
-
-    #this mandatory attribute has to be listed before those with default values
-    id: str = field(validator=instance_of(str))
-
-    sboTerm: str = field(default=None, validator=optional(instance_of(str)))
 
     substanceUnits:   str = field(default=None, validator=optional(instance_of(str)))
     timeUnits:        str = field(default=None, validator=optional(instance_of(str)))
@@ -254,49 +236,17 @@ class SBML(SBase):
     http://www.sbml.org/sbml/level3/version2/core
 
     Args:
-        id:      optional id
-        name:    optional name
-        sboTerm: optional sboTerm
-        metaid:  optional metaid
-
         level:   SBML level used   (should be fixed to 3)
         version: SBML version used (should be fixed to 2)
 
         model:   Optional model
     """
 
-    id:      str = field(default=None,validator=optional(instance_of(str)))
-    name:    str = field(default=None,validator=optional(instance_of(str)))
-    sboTerm: str = field(default=None,validator=optional(instance_of(str)))
-    metaid:  str = field(default=None,validator=optional(instance_of(str)))
-
     level:   str = field(default="3",validator=instance_of(str))
     version: str = field(default="2",validator=instance_of(str))
 
     model: Model = field(default=None, validator=optional(instance_of(Model)))
 
-@modelspec.define
-class SBase(Base):
-    """
-    Abstract base class for all SBML objects
-
-    Args:
-        id:      SId optional
-        name:    string optional
-        metaid:  XML ID optional
-        sboTerm: SBOTerm optional
-
-        notes:      XHTML 1.0 optional
-        annotation: XML content optional
-    """
-
-    id:      str = field(default=None,validator=optional(instance_of(str)))
-    name:    str = field(default=None,validator=optional(instance_of(str)))
-    metaid:  str = field(default=None,validator=optional(instance_of(str)))
-    sboTerm: str = field(default=None,validator=optional(instance_of(str)))
-
-    notes:      str = field(default=None,validator=optional(instance_of(str)))
-    annotation: str = field(default=None,validator=optional(instance_of(str)))
 
 if __name__ == "__main__":
     sbml_doc = SBML(id="sbml_example")
