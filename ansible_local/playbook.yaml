@@ -1,0 +1,55 @@
+---
+- hosts: all
+  become: yes
+  vars:
+     passhash: "{{ lookup('file', '/vagrant/untracked') }}"
+  tasks:
+    - name: apt update and upgrade
+      apt:
+        update_cache: true
+        upgrade: full
+    - name: set password for vagrant user
+      #generate the hash using this command: mkpasswd --method=SHA-512 --stdin --rounds=1000000 --salt=<salt>
+      user:
+        name: vagrant
+        password: "{{ passhash }}"
+    - name: remove default ubuntu user
+      user:
+        name: ubuntu
+        state: absent
+        remove: yes
+    - name: install desktop
+      #ensure this task is after the one setting the vagrant user's password
+      apt:
+        name:
+        - lightdm
+        - ubuntu-desktop
+        - whois
+    - name: make lightdm the default using default-display-manager file
+      copy:
+        src: default-display-manager
+        dest: /etc/X11/default-display-manager
+    - name: enable lightdm autologin
+      copy:
+        src: lightdm.conf
+        dest: /etc/lightdm/lightdm.conf
+    - name: select lightdm using debconf
+      #use 'sudo debconf-show lightdm' to determine the "question"
+      debconf:
+        name: lightdm
+        question: shared/default-x-display-manager
+        value: lightdm
+        vtype: select
+      register: lightdm_conf
+    - name: run dpkg-reconfigure for lightdm
+      #activate the debconf settings we set above
+      command: dpkg-reconfigure -f noninteractive lightdm
+      when: lightdm_conf.changed
+    - name: supress first time wizard
+      remote_user: root
+      become: true
+      become_user: vagrant
+      shell: |
+        mkdir ~/.config
+        echo "yes" >> ~/.config/gnome-initial-setup-done
+        
