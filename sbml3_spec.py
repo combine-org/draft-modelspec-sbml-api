@@ -36,6 +36,87 @@ class SBase(Base):
     annotation: str = field(default=None,validator=optional(instance_of(str)))
 
 @modelspec.define
+class Event(SBase):
+    pass
+
+@modelspec.define
+class SimpleSpeciesReference(SBase):
+    """
+    Base class used by SpeciesReference and ModifierSpeciesReference
+
+    Args:
+        species: SIdRef
+    """
+
+    species: str = field(default=None,validator=instance_of(str))
+
+@modelspec.define
+class ModifierSpeciesReference(SimpleSpeciesReference):
+    ''
+
+@modelspec.define
+class SpeciesReference(SimpleSpeciesReference):
+    """
+    Args:
+        stoichiometry: double optional
+        constant: boolean
+    """
+
+    stoichiometry: float = field(default=None,validator=optional(instance_of(float)))
+    constant:      bool = field(default=None,validator=instance_of(bool))
+
+@modelspec.define
+class LocalParameter(SBase):
+    """
+    Args:
+        units: UnitSIdRef optional
+    """
+
+    value: float = field(default=None,validator=optional(instance_of(float)))
+    units: str = field(default=None,validator=optional(instance_of(str)))
+
+@modelspec.define
+class KineticLaw(SBase):
+    """
+    """
+
+    math: str = field(default=None,validator=optional(instance_of(str)))
+
+    listOfLocalParameters:           List[LocalParameter]   = field(factory=list)
+
+@modelspec.define
+class Reaction(SBase):
+    """
+    A model reaction
+
+    Args:
+        reversible: boolean
+        compartment: SIdRef optional
+    """
+
+    reversible:   bool = field(default=None,validator=instance_of(bool))
+    compartment:  str = field(default=None,validator=optional(instance_of(str)))
+
+    listOfReactants:           List[SpeciesReference]           = field(factory=list)
+    listOfProducts:            List[SpeciesReference]           = field(factory=list)
+    listOfModifiers:           List[ModifierSpeciesReference]   = field(factory=list)
+
+    kineticLaw:  KineticLaw = field(default=None, validator=optional(instance_of(KineticLaw)))
+
+@modelspec.define
+class Constraint(SBase):
+    """
+    A model constraint
+
+    Args:
+        math:    MathML optional
+        message: XHTML 1.0 optional
+    """
+
+    math:    str = field(default=None,validator=optional(instance_of(str)))
+    message: str = field(default=None,validator=optional(instance_of(str)))
+
+@modelspec.define
 class Rule(SBase):
     """
     A rule, either algebraic, assignment or rate
@@ -217,9 +298,9 @@ class Model(SBase):
     listOfParameters:          List[Parameter]          = field(factory=list)
     listOfInitialAssignments:  List[InitialAssignment]  = field(factory=list)
     listOfRules:               List[Rule]               = field(factory=list)
-    # ListOfConstraints
-    # ListOfReactions
-    # ListOfEvents        
+    listOfConstraints:         List[Constraint]         = field(factory=list)
+    listOfReactions:           List[Reaction]           = field(factory=list)
+    listOfEvents:              List[Event]              = field(factory=list)
 
 @modelspec.define
 class SBML(SBase):
@@ -242,6 +323,7 @@ class SBML(SBase):
 
 if __name__ == "__main__":
     sbml_doc = SBML(id="sbml_example")
+    print(sbml_doc.id)
     model = Model(id="model1")
     sbml_doc.model = model
 
