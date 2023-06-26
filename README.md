@@ -5,29 +5,29 @@ https://github.com/combine-org/compbiolibs/issues/28
 It is based on this initial neuroml modelspec api:
 https://github.com/ModECI/modelspec/blob/development/examples/neuroml2/neuroml2_spec.py
 
-This was developed on an ubuntu linux vm under virtualbox. The aim is to document setting up the vm from scratch using Vagrant,
-but for now here are the setup steps from the point of having the vm running:
+This was developed on an ubuntu linux vm under virtualbox configured using Vagrant. The vagrant config is here:
+https://github.com/UCL-ARC/rjv_vagrant_files/tree/main/comp_bio_libs. It is a basic linux vm with git and pip installed, and the virtualenv pip module.
+Once the basic vm is installed follow the bash commands below:
 
 ```
-## todo: document steps to setup mkvirtualenv
-
-#create workspace folder and virtual environment
-export BASE_FOLDER=~/cbl_code                   #pick which folder repository gets clone into
+#setup environment variables
+export BASE_FOLDER=~/repos                      #pick which folder repository gets clone into
 export REPO_NAME=draft-modelspec-sbml-api       #must match the repo's actual name
 export VIRTENV_NAME=${REPO_NAME}
-export PATH_TO_PYTHON=/home/ccaervi/mambaforge/envs/py310/bin/python #set to the python you want to use
-export PATH=${PATH_TO_PYTHON}:${PATH}
 
+#create workspace
 mkdir -p ${BASE_FOLDER}
 cd ${BASE_FOLDER}
 git clone git@github.com:combine-org/${REPO_NAME}.git
 cd ${REPO_NAME}
 chmod u+x ./sbml_spec.py
 
+#create virtual environment
 rm -rf ~/.virtualenvs/${VIRTENV_NAME}
 mkvirtualenv ${VIRTENV_NAME} --python=${PATH_TO_PYTHON}
 deactivate
 workon ${VIRTENV_NAME}
+
 
 #download and install modelspec
 cd untracked
