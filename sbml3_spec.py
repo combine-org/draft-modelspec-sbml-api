@@ -35,7 +35,7 @@ class SBase(Base):
     notes:      str = field(default=None,validator=optional(instance_of(str)))
     annotation: str = field(default=None,validator=optional(instance_of(str)))
 
-#@modelspec.define
+@modelspec.define
 class Rule(SBase):
     """
     A rule, either algebraic, assignment or rate
@@ -61,7 +61,7 @@ class AssignmentRule(Rule):
         variable: SIdRef required
     """
 
-    variable: str = field(validator=instance_of(str))
+    variable: str = field(default=None,validator=instance_of(str))
 
 @modelspec.define
 class RateRule(Rule):
@@ -72,8 +72,7 @@ class RateRule(Rule):
         variable: SIdRef required
     """
 
-    variable: str = field(validator=instance_of(str))
-
+    variable: str = field(default=None,validator=instance_of(str))
 
 @modelspec.define
 class InitialAssignment(SBase):
@@ -85,9 +84,8 @@ class InitialAssignment(SBase):
         math: MathML optional
     """
 
-    symbol: str = field(validator=instance_of(str))
+    symbol: str = field(default=None,validator=instance_of(str))
     math: str = field(default=None,validator=optional(instance_of(str)))
-
 
 @modelspec.define
 class Parameter(SBase):
@@ -100,11 +98,10 @@ class Parameter(SBase):
         constant: boolean
     """
 
-    constant: bool = field(validator=instance_of(bool))
+    constant: bool = field(default=None,validator=instance_of(bool))
 
     value: float = field(default=None,validator=optional(instance_of(float)))
     units: str = field(default=None,validator=optional(instance_of(str)))
-
 
 @modelspec.define
 class Species(SBase):
@@ -122,16 +119,15 @@ class Species(SBase):
         conversionFactor: SIdRef optional
     """
 
-    compartment: str = field(validator=instance_of(str))
-    hasOnlySubstanceUnits: bool = field(validator=instance_of(bool))
-    boundaryCondition: bool = field(validator=instance_of(bool))
-    constant: bool = field(validator=instance_of(bool))
+    compartment: str = field(default=None,validator=instance_of(str))
+    hasOnlySubstanceUnits: bool = field(default=None,validator=instance_of(bool))
+    boundaryCondition: bool = field(default=None,validator=instance_of(bool))
+    constant: bool = field(default=None,validator=instance_of(bool))
 
     initialAmount: float = field(default=None, validator=optional(instance_of(float)))
     initialConcentration: float = field(default=None, validator=optional(instance_of(float)))
     substanceUnits: str = field(default=None, validator=optional(instance_of(str)))
     conversionFactor: str = field(default=None, validator=optional(instance_of(str)))
-
 
 @modelspec.define
 class Compartment(SBase):
@@ -145,7 +141,7 @@ class Compartment(SBase):
         constant: whether size is fixed
     """
 
-    constant: bool = field(validator=instance_of(bool))
+    constant: bool = field(default=None,validator=instance_of(bool))
 
     spatialDimensions: float = field(default=None,validator=optional(instance_of(float)))
     size: float = field(default=None,validator=optional(instance_of(float)))
@@ -164,7 +160,7 @@ class Unit(SBase):
         multiplier: double
     """
 
-    kind:       str = field(validator=instance_of(str))
+    kind:       str = field(default=None,validator=instance_of(str))
     exponent:   str = field(default=1.0, validator=instance_of(float))
     scale:      str = field(default=0,   validator=instance_of(int))
     multiplier: str = field(default=1.0, validator=instance_of(float))
@@ -180,7 +176,6 @@ class UnitDefinition(SBase):
 
     listOfUnits: List[Unit] = field(factory=list)
 
-
 @modelspec.define
 class FunctionDefinition(SBase):
     """
@@ -191,7 +186,6 @@ class FunctionDefinition(SBase):
     """
 
     math: str = field(default=None, validator=optional(instance_of(str)))
-
 
 @modelspec.define
 class Model(SBase):
@@ -227,7 +221,6 @@ class Model(SBase):
     # ListOfReactions
     # ListOfEvents        
 
-
 @modelspec.define
 class SBML(SBase):
     """
@@ -246,7 +239,6 @@ class SBML(SBase):
     version: str = field(default="2",validator=instance_of(str))
 
     model: Model = field(default=None, validator=optional(instance_of(Model)))
-
 
 if __name__ == "__main__":
     sbml_doc = SBML(id="sbml_example")
@@ -282,8 +274,6 @@ if __name__ == "__main__":
     #initial assignment
     initialAssignment = InitialAssignment(id="initialAssignment1",symbol="parameter1")
     model.listOfInitialAssignments.append(initialAssignment)
-
-    
 
     print(sbml_doc)
     print(sbml_doc.id)
