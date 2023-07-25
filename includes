@@ -1,0 +1,3 @@
+export REPO_NAME=draft-modelspec-sbml-api
+export VIRTENV_NAME=virtenv
+export MODELSPEC_PATH=${HOME}/repos/modelspec

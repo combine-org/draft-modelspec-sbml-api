@@ -5,9 +5,12 @@ https://github.com/combine-org/compbiolibs/issues/28
 It is based on this initial neuroml modelspec api:
 https://github.com/ModECI/modelspec/blob/development/examples/neuroml2/neuroml2_spec.py
 
-This was developed on an ubuntu linux vm under virtualbox configured using Vagrant. The vagrant config is here:
-https://github.com/UCL-ARC/rjv_vagrant_files/tree/main/comp_bio_libs. It is a basic linux vm with git, python3-pip and python3-venv system packages installed.
-Once the basic vm is installed follow the bash commands below:
+To replicate my development setup you can follow the steps outlines here:
+- https://github.com/UCL-ARC/rjv_vagrant_files/tree/main/comp_bio_libs
+
+Alternatively use any suitable Linux environment with the correct dependencies install (see the ansible [playbook](https://github.com/UCL-ARC/rjv_vagrant_files/blob/main/comp_bio_libs/synced_folder/ansible_local/playbook.yml) for a list of the packages required).
+
+Then follow these steps:
 
 ```
 #setup environment variables
