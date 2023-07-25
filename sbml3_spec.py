@@ -37,7 +37,11 @@ class SBase(Base):
 
 @modelspec.define
 class Event(SBase):
-    pass
+    useValuesFromTriggerTime: bool = field(default=None,validator=instance_of(bool))
+    trigger:  Trigger = field(default=None, validator=optional(instance_of(Trigger)))
+    priority: Priority = field(default=None, validator=optional(instance_of(Priority)))
+    delay:    Delay = field(default=None, validator=optional(instance_of(Delay)))
+    listOfEventAssignments: List[EventAssignments]   = field(factory=list)
 
 @modelspec.define
 class SimpleSpeciesReference(SBase):
