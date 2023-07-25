@@ -36,12 +36,35 @@ class SBase(Base):
     annotation: str = field(default=None,validator=optional(instance_of(str)))
 
 @modelspec.define
+class Trigger(SBase):
+    initialValue: bool = field(default=None,validator=instance_of(bool))
+    persistent: bool = field(default=None,validator=instance_of(bool))
+    math: str = field(default=None,validator=optional(instance_of(str)))
+
+@modelspec.define
+class Priority(SBase):
+    math: str = field(default=None,validator=optional(instance_of(str)))
+
+@modelspec.define
+class Delay(SBase):
+    math: str = field(default=None,validator=optional(instance_of(str)))
+
+@modelspec.define
+class EventAssignment(SBase):
+    '''
+    Args:
+        variable: SIdRef
+    '''
+    math: str = field(default=None,validator=optional(instance_of(str)))
+    variable:  str = field(default=None,validator=optional(instance_of(str)))
+
+@modelspec.define
 class Event(SBase):
     useValuesFromTriggerTime: bool = field(default=None,validator=instance_of(bool))
     trigger:  Trigger = field(default=None, validator=optional(instance_of(Trigger)))
     priority: Priority = field(default=None, validator=optional(instance_of(Priority)))
     delay:    Delay = field(default=None, validator=optional(instance_of(Delay)))
-    listOfEventAssignments: List[EventAssignments]   = field(factory=list)
+    listOfEventAssignments: List[EventAssignment]   = field(factory=list)
 
 @modelspec.define
 class SimpleSpeciesReference(SBase):
