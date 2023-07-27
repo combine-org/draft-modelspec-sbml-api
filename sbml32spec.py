@@ -12,13 +12,86 @@ from modelspec import field, instance_of, optional
 from modelspec.base_types import Base
 from typing import List
 
+import re
+
+def valid_mathml(instance, attribute, value):
+    'http://www.w3.org/1998/Math/MathML'
+
+def xmlns_sbml(instance, attribute, value):
+    if value != "http://www.sbml.org/sbml/level3/version2/core":
+        raise ValueError("xmlns must be 'http://www.sbml.org/sbml/level3/version2/core'")
+
+def xmlns_notes(instance, attribute, value):
+    if value != "http://www.w3.org/1999/xhtml":
+        raise ValueError("xmlns must be 'http://www.w3.org/1999/xhtml'")
+
+def xmlns_math(instance, attribute, value):
+    if value != "http://www.w3.org/1998/Math/MathML":
+        raise ValueError("xmlns must be 'http://www.w3.org/1998/Math/MathML'")
+
+def fixed_level(instance, attribute, value):
+    if value != "3":
+        raise ValueError("this implementation only supports level 3")
+
+def fixed_version(instance, attribute, value):
+    if value != "2":
+        raise ValueError("this implementation only supports level 2")
+
+def valid_sid(instance, attribute, value):
+    if not re.fullmatch('[_A-Za-z][_A-Za-z0-9]*',value):
+        raise ValueError("an SId must match the regular expression: [_A-Za-z][_A-Za-z0-9]*")
+
+def valid_unitsid(instance, attribute, value):
+    if not re.fullmatch('[_A-Za-z][_A-Za-z0-9]*',value):
+        raise ValueError("a UnitSId must match the regular expression: [_A-Za-z][_A-Za-z0-9]*")
+
+def valid_sbo(instance, attribute, value):
+    if not re.fullmatch('SBO:[0-9]{7}',value):
+        raise ValueError("an SBOTerm must match the regular expression: SBO:[0-9]{7}")
+
+def valid_xml_id(instance,attribute,value):
+    'a valid XML 1.0 ID'
+    #not implemented yet: CombiningChar , Extender
+    #NameChar ::= letter | digit | '.' | '-' | '_' | ':' | CombiningChar | Extender
+    #ID ::= ( letter | '_' | ':' ) NameChar*
+
+    if not re.fullmatch('[A-Za-z_:][A-Za-z0-9\._:-]*',value):
+        raise ValueError("an SBOTerm must match the regular expression: SBO:[0-9]{7}")
+    
+def valid_xhtml(instance,attribute,value):
+    from lxml import etree
+    from io import StringIO
+    etree.parse(StringIO(value), etree.HTMLParser(recover=False))
+
+def valid_xml_content(instance,attribute,value):
+    'stub'
+
+    if not re.search('<.*>',value):
+        raise ValueError(f"{value} doesn't look like XML (this validator is only a stub)")
+
+def valid_mathml(instance,attribute,value):
+    'stub'
+
+    if not re.search('<math.*</math>',value):
+        raise ValueError(f"{value} doesn't look like MathML (this validator is only a stub)")
+
+@modelspec.define
+class Notes(Base):
+    xmlns: str = field(default="http://www.w3.org/1999/xhtml",validator=[instance_of(str),xmlns_notes])
+    content: str = field(default=None,validator=optional([instance_of(str),valid_xhtml]))
+
+@modelspec.define
+class Math(Base):
+    xmlns: str = field(default="http://www.w3.org/1998/Math/MathML",validator=[instance_of(str),xmlns_math])
+    content: str = field(default=None,validator=optional([instance_of(str),valid_mathml]))
+
 @modelspec.define
 class SBase(Base):
     """
     Abstract base class for all SBML objects
 
     Args:
-        id:      SId optional
+        sid:     SId optional
         name:    string optional
         metaid:  XML ID optional
         sboTerm: SBOTerm optional
@@ -27,13 +100,13 @@ class SBase(Base):
         annotation: XML content optional
     """
 
-    id:      str = field(default=None,validator=optional(instance_of(str)))
+    sid:     str = field(default=None,validator=optional([instance_of(str),valid_sid]))
     name:    str = field(default=None,validator=optional(instance_of(str)))
-    metaid:  str = field(default=None,validator=optional(instance_of(str)))
-    sboTerm: str = field(default=None,validator=optional(instance_of(str)))
+    metaid:  str = field(default=None,validator=optional([instance_of(str),valid_xml_id]))
+    sboTerm: str = field(default=None,validator=optional([instance_of(str),valid_sbo]))
 
-    notes:      str = field(default=None,validator=optional(instance_of(str)))
-    annotation: str = field(default=None,validator=optional(instance_of(str)))
+    notes:      Notes = field(default=None,validator=optional(instance_of(Notes)))
+    annotation: str = field(default=None,validator=optional([instance_of(str),valid_xml_content]))
 
 @modelspec.define
 class Trigger(SBase):
@@ -290,10 +363,14 @@ class FunctionDefinition(SBase):
     A function definition using MathML
 
     Args:
-        math: Optional function definition using MathML http://www.w3.org/1998/Math/MathML
+        sid:  SId required
+
+        math: MathML function definition optional
     """
 
-    math: str = field(default=None, validator=optional(instance_of(str)))
+    sid:     str = field(default=None,validator=[instance_of(str),valid_sid])
+
+    math: Math = field(default=None, validator=optional(instance_of(Math)))
 
 @modelspec.define
 class Model(SBase):
@@ -301,22 +378,22 @@ class Model(SBase):
     The model
 
     Args:
-        substanceUnits:   Optional substance units
-        timeUnits:        Optional time units
-        volumeUnits:      Optional volume units
-        areaUnits:        Optional area units
-        lengthUnits:      Optional length units
-        extentUnits:      Optional extent units
-        conversionFactor: Optional conversion factor
+        substanceUnits:   UnitSIdRef optional
+        timeUnits:        UnitSIdRef optional
+        volumeUnits:      UnitSIdRef optional
+        areaUnits:        UnitSIdRef optional
+        lengthUnits:      UnitSIdRef optional
+        extentUnits:      UnitSIdRef optional
+        conversionFactor: SIdRef optional
     """
 
-    substanceUnits:   str = field(default=None, validator=optional(instance_of(str)))
-    timeUnits:        str = field(default=None, validator=optional(instance_of(str)))
-    volumeUnits:      str = field(default=None, validator=optional(instance_of(str)))
-    areaUnits:        str = field(default=None, validator=optional(instance_of(str)))
-    lengthUnits:      str = field(default=None, validator=optional(instance_of(str)))
-    extentUnits:      str = field(default=None, validator=optional(instance_of(str)))
-    conversionFactor: str = field(default=None, validator=optional(instance_of(str)))
+    substanceUnits:   str = field(default=None, validator=optional([instance_of(str),valid_unitsid]))
+    timeUnits:        str = field(default=None, validator=optional([instance_of(str),valid_unitsid]))
+    volumeUnits:      str = field(default=None, validator=optional([instance_of(str),valid_unitsid]))
+    areaUnits:        str = field(default=None, validator=optional([instance_of(str),valid_unitsid]))
+    lengthUnits:      str = field(default=None, validator=optional([instance_of(str),valid_unitsid]))
+    extentUnits:      str = field(default=None, validator=optional([instance_of(str),valid_unitsid]))
+    conversionFactor: str = field(default=None, validator=optional([instance_of(str),valid_unitsid]))
 
     listOfFunctionDefinitions: List[FunctionDefinition] = field(factory=list)
     listOfUnitDefinitions:     List[UnitDefinition]     = field(factory=list)
@@ -337,87 +414,15 @@ class SBML(SBase):
     http://www.sbml.org/sbml/level3/version2/core
 
     Args:
-        level:   SBML level used   (should be fixed to 3)
-        version: SBML version used (should be fixed to 2)
+        xmlns:   string, fixed to "http://www.sbml.org/sbml/level3/version2/core"
+        level:   SBML level, fixed to 3
+        version: SBML version, fixed to 2
 
         model:   Optional model
     """
 
-    level:   str = field(default="3",validator=instance_of(str))
-    version: str = field(default="2",validator=instance_of(str))
+    xmlns:   str = field(default="http://www.sbml.org/sbml/level3/version2/core",validator=[instance_of(str),xmlns_sbml])
+    level:   str = field(default="3",validator=[instance_of(str),fixed_level])
+    version: str = field(default="2",validator=[instance_of(str),fixed_version])
 
     model: Model = field(default=None, validator=optional(instance_of(Model)))
-
-if __name__ == "__main__":
-    sbml_doc = SBML(id="sbml_example")
-    print(sbml_doc.id)
-    model = Model(id="model1")
-    sbml_doc.model = model
-
-    #function definition list
-    funcDef = FunctionDefinition(id="my_func")
-    funcDef.math = \
-    '''<math xmlns="http://www.w3.org/1998/Math/MathML"> <apply> <eq/> <apply> <plus/> <cn>2</cn> <cn>2</cn> </apply> <cn>4</cn> </apply> </math>'''
-    model.listOfFunctionDefinitions.append(funcDef)
-
-    #unit definition list
-    unitDef = UnitDefinition(id="metres_per_second")
-    unit1 = Unit(kind="metre")
-    unit2 = Unit(kind="second",exponent=-1.0)
-    unitDef.listOfUnits.append(unit1)
-    unitDef.listOfUnits.append(unit2)
-    model.listOfUnitDefinitions.append(unitDef)
-
-    #compartment list
-    compartment = Compartment(id="compartment1",spatialDimensions=3.0,size=2.798,constant=True)
-    model.listOfCompartments.append(compartment)
-
-    #species list
-    species = Species(id="species1",compartment="compartment1",hasOnlySubstanceUnits=False,boundaryCondition=False,constant=False)
-    model.listOfSpecies.append(species)
-    
-    #parameter list
-    parameter = Parameter(id="parameter1",value=1.2345,units="meters_per_second",constant=False)
-    model.listOfParameters.append(parameter)
-
-    #initial assignment
-    initialAssignment = InitialAssignment(id="initialAssignment1",symbol="parameter1")
-    model.listOfInitialAssignments.append(initialAssignment)
-
-    print(sbml_doc)
-    print(sbml_doc.id)
-
-    sbml_doc.to_json_file("%s.json" % sbml_doc.id)
-    sbml_doc.to_yaml_file("%s.yaml" % sbml_doc.id)
-    sbml_doc.to_bson_file("%s.bson" % sbml_doc.id)
-    # sbml_doc.to_xml_file("%s.xml"%sbml_doc.id)
-
-    print(" >> Full document details in YAML format:\n")
-
-    print(sbml_doc.to_yaml())
-
-    doc_md = sbml_doc.generate_documentation(format="markdown")
-
-    with open("SBML3.md", "w") as d:
-        d.write(doc_md)
-
-    doc_rst = sbml_doc.generate_documentation(format="rst")
-
-    with open("SBML3.rst", "w") as d:
-        d.write(doc_rst)
-
-    print("\n  >> Generating specification in dict form...")
-    doc_dict = sbml_doc.generate_documentation(format="dict")
-
-    import json
-    import yaml
-
-    with open("SBML3.specification.json", "w") as d:
-        d.write(json.dumps(doc_dict, indent=4))
-
-    print("  >> Generating specification in YAML...\n")
-
-    with open("SBML3.specification.yaml", "w") as d:
-        yy = yaml.dump(doc_dict, indent=4, sort_keys=False)
-        print(yy)
-        d.write(yy)

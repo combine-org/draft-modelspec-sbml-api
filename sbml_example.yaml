@@ -1,33 +1,33 @@
-sbml_example:
-    model:
-        id: model1
-        listOfFunctionDefinitions:
-            my_func:
-                math: <math xmlns="http://www.w3.org/1998/Math/MathML"> <apply> <eq/>
-                    <apply> <plus/> <cn>2</cn> <cn>2</cn> </apply> <cn>4</cn> </apply>
-                    </math>
-        listOfUnitDefinitions:
-            metres_per_second:
-                listOfUnits:
-                -   kind: metre
-                -   kind: second
-                    exponent: -1.0
-        listOfCompartments:
-            compartment1:
-                constant: true
-                spatialDimensions: 3.0
-                size: 2.798
-        listOfSpecies:
-            species1:
-                compartment: compartment1
-                hasOnlySubstanceUnits: false
-                boundaryCondition: false
-                constant: false
-        listOfParameters:
-            parameter1:
-                constant: false
-                value: 1.2345
-                units: meters_per_second
-        listOfInitialAssignments:
-            initialAssignment1:
-                symbol: parameter1
+sid: sbml_example
+sboTerm: SBO:1234567
+model:
+    sid: model1
+    listOfFunctionDefinitions:
+    -   sid: my_func
+        math: <math xmlns="http://www.w3.org/1998/Math/MathML"> <apply> <eq/> <apply>
+            <plus/> <cn>2</cn> <cn>2</cn> </apply> <cn>4</cn> </apply> </math>
+    listOfUnitDefinitions:
+    -   sid: metres_per_second
+        listOfUnits:
+        -   kind: metre
+        -   kind: second
+            exponent: -1.0
+    listOfCompartments:
+    -   sid: compartment1
+        constant: true
+        spatialDimensions: 3.0
+        size: 2.798
+    listOfSpecies:
+    -   sid: species1
+        compartment: compartment1
+        hasOnlySubstanceUnits: false
+        boundaryCondition: false
+        constant: false
+    listOfParameters:
+    -   sid: parameter1
+        constant: false
+        value: 1.2345
+        units: meters_per_second
+    listOfInitialAssignments:
+    -   sid: initialAssignment1
+        symbol: parameter1

@@ -34,7 +34,7 @@ http://www.sbml.org/sbml/level3/version2/core
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -47,16 +47,23 @@ http://www.sbml.org/sbml/level3/version2/core
 
 
   <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i>  string, fixed to "http://www.sbml.org/sbml/level3/version2/core"</i></td>
+ </tr>
+
+
+  <tr>
     <td><b>level</b></td>
     <td>str</td>
-    <td><i>  SBML level   (must be 3)</i></td>
+    <td><i>  SBML level, fixed to 3</i></td>
  </tr>
 
 
   <tr>
     <td><b>version</b></td>
     <td>str</td>
-    <td><i>SBML version (must be 2)</i></td>
+    <td><i>SBML version, fixed to 2</i></td>
  </tr>
 
 
@@ -64,6 +71,25 @@ http://www.sbml.org/sbml/level3/version2/core
     <td><b>model</b></td>
     <td><a href="#model">Model</a></td>
     <td><i>  Optional model</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 
@@ -104,7 +130,7 @@ The model
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -119,49 +145,49 @@ The model
   <tr>
     <td><b>substanceUnits</b></td>
     <td>str</td>
-    <td><i>  Optional substance units</i></td>
+    <td><i>  UnitSIdRef optional</i></td>
  </tr>
 
 
   <tr>
     <td><b>timeUnits</b></td>
     <td>str</td>
-    <td><i>       Optional time units</i></td>
+    <td><i>       UnitSIdRef optional</i></td>
  </tr>
 
 
   <tr>
     <td><b>volumeUnits</b></td>
     <td>str</td>
-    <td><i>     Optional volume units</i></td>
+    <td><i>     UnitSIdRef optional</i></td>
  </tr>
 
 
   <tr>
     <td><b>areaUnits</b></td>
     <td>str</td>
-    <td><i>       Optional area units</i></td>
+    <td><i>       UnitSIdRef optional</i></td>
  </tr>
 
 
   <tr>
     <td><b>lengthUnits</b></td>
     <td>str</td>
-    <td><i>     Optional length units</i></td>
+    <td><i>     UnitSIdRef optional</i></td>
  </tr>
 
 
   <tr>
     <td><b>extentUnits</b></td>
     <td>str</td>
-    <td><i>     Optional extent units</i></td>
+    <td><i>     UnitSIdRef optional</i></td>
  </tr>
 
 
   <tr>
     <td><b>conversionFactor</b></td>
     <td>str</td>
-    <td><i>Optional conversion factor</i></td>
+    <td><i>SIdRef optional</i></td>
  </tr>
 
 
@@ -241,18 +267,30 @@ The model
 
 </table>
 
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
 ## FunctionDefinition
 A function definition using MathML
 
 ### Allowed parameters
 <table>
-  <tr>
-    <td><b>sid</b></td>
-    <td>str</td>
-    <td><i>    SId optional</i></td>
- </tr>
-
-
   <tr>
     <td><b>name</b></td>
     <td>str</td>
@@ -276,7 +314,7 @@ A function definition using MathML
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -289,9 +327,54 @@ A function definition using MathML
 
 
   <tr>
-    <td><b>math</b></td>
+    <td><b>sid</b></td>
     <td>str</td>
-    <td><i>Optional function definition using MathML http://www.w3.org/1998/Math/MathML</i></td>
+    <td><i>    SId optional</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>math</b></td>
+    <td><a href="#math">Math</a></td>
+    <td><i>MathML function definition optional</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
+## Math
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 
@@ -332,7 +415,7 @@ A unit definition
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -353,6 +436,25 @@ A unit definition
     <td><a href="#list">List</a></td>
     <td><i>List of units used to compose the definition</i></td>
   </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
 
 
 </table>
@@ -392,7 +494,7 @@ A unit used to compose a unit definition. unit = (multiplier x 10^scale x kind)^
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -434,6 +536,25 @@ A unit used to compose a unit definition. unit = (multiplier x 10^scale x kind)^
 
 </table>
 
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
 ## Compartment
 A compartment
 
@@ -469,7 +590,7 @@ A compartment
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -511,6 +632,25 @@ A compartment
 
 </table>
 
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
 ## Species
 A species: entities of the same kind participating in reactions within a specific compartment
 
@@ -546,7 +686,7 @@ A species: entities of the same kind participating in reactions within a specifi
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -616,6 +756,25 @@ A species: entities of the same kind participating in reactions within a specifi
 
 </table>
 
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
 ## Parameter
 A parameter
 
@@ -651,7 +810,7 @@ A parameter
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -681,6 +840,25 @@ A parameter
     <td><b>units</b></td>
     <td>str</td>
     <td><i>UnitSIdRef optional</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 
@@ -721,7 +899,7 @@ An initial assignment
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -744,6 +922,25 @@ An initial assignment
     <td><b>math</b></td>
     <td>str</td>
     <td><i>MathML optional</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 
@@ -784,7 +981,7 @@ A rule, either algebraic, assignment or rate
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -800,6 +997,25 @@ A rule, either algebraic, assignment or rate
     <td><b>math</b></td>
     <td>str</td>
     <td><i>MathML optional</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 
@@ -840,7 +1056,7 @@ A model constraint
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -863,6 +1079,25 @@ A model constraint
     <td><b>message</b></td>
     <td>str</td>
     <td><i>XHTML 1.0 optional</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 
@@ -903,7 +1138,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -963,6 +1198,25 @@ A model reaction
 
 </table>
 
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
 ## KineticLaw
     
 
@@ -998,7 +1252,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1026,6 +1280,25 @@ A model reaction
     <td><a href="#list">List</a></td>
     <td><i></i></td>
   </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
 
 
 </table>
@@ -1063,7 +1336,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1091,69 +1364,20 @@ A model reaction
 
 </table>
 
-## SpeciesReference
+## Notes
 ### Allowed parameters
 <table>
   <tr>
-    <td><b>sid</b></td>
+    <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i>    SId optional</i></td>
+    <td><i></i></td>
  </tr>
 
 
   <tr>
-    <td><b>name</b></td>
+    <td><b>content</b></td>
     <td>str</td>
-    <td><i>   string optional</i></td>
- </tr>
-
-
-  <tr>
-    <td><b>metaid</b></td>
-    <td>str</td>
-    <td><i> XML ID optional</i></td>
- </tr>
-
-
-  <tr>
-    <td><b>sboTerm</b></td>
-    <td>str</td>
-    <td><i>SBOTerm optional</i></td>
- </tr>
-
-
-  <tr>
-    <td><b>notes</b></td>
-    <td>str</td>
-    <td><i>     XHTML 1.0 optional</i></td>
- </tr>
-
-
-  <tr>
-    <td><b>annotation</b></td>
-    <td>str</td>
-    <td><i>XML content optional</i></td>
- </tr>
-
-
-  <tr>
-    <td><b>species</b></td>
-    <td>str</td>
-    <td><i>SIdRef</i></td>
- </tr>
-
-
-  <tr>
-    <td><b>stoichiometry</b></td>
-    <td>float</td>
-    <td><i>double optional</i></td>
- </tr>
-
-
-  <tr>
-    <td><b>constant</b></td>
-    <td>bool</td>
-    <td><i>boolean</i></td>
+    <td><i></i></td>
  </tr>
 
 
@@ -1192,7 +1416,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1222,6 +1446,112 @@ A model reaction
     <td><b>constant</b></td>
     <td>bool</td>
     <td><i>boolean</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
+## SpeciesReference
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>sid</b></td>
+    <td>str</td>
+    <td><i>    SId optional</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>name</b></td>
+    <td>str</td>
+    <td><i>   string optional</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>metaid</b></td>
+    <td>str</td>
+    <td><i> XML ID optional</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>sboTerm</b></td>
+    <td>str</td>
+    <td><i>SBOTerm optional</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>notes</b></td>
+    <td><a href="#notes">Notes</a></td>
+    <td><i>     XHTML 1.0 optional</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>annotation</b></td>
+    <td>str</td>
+    <td><i>XML content optional</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>species</b></td>
+    <td>str</td>
+    <td><i>SIdRef</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>stoichiometry</b></td>
+    <td>float</td>
+    <td><i>double optional</i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>constant</b></td>
+    <td>bool</td>
+    <td><i>boolean</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 
@@ -1260,7 +1590,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1276,6 +1606,25 @@ A model reaction
     <td><b>species</b></td>
     <td>str</td>
     <td><i>SIdRef</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 
@@ -1314,7 +1663,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1367,6 +1716,25 @@ A model reaction
 
 </table>
 
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
 ## Trigger
 ### Allowed parameters
 <table>
@@ -1400,7 +1768,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1428,6 +1796,25 @@ A model reaction
 
   <tr>
     <td><b>math</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
     <td>str</td>
     <td><i></i></td>
  </tr>
@@ -1468,7 +1855,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1482,6 +1869,25 @@ A model reaction
 
   <tr>
     <td><b>math</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
     <td>str</td>
     <td><i></i></td>
  </tr>
@@ -1522,7 +1928,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1536,6 +1942,25 @@ A model reaction
 
   <tr>
     <td><b>math</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
     <td>str</td>
     <td><i></i></td>
  </tr>
@@ -1576,7 +2001,7 @@ A model reaction
 
   <tr>
     <td><b>notes</b></td>
-    <td>str</td>
+    <td><a href="#notes">Notes</a></td>
     <td><i>     XHTML 1.0 optional</i></td>
  </tr>
 
@@ -1599,6 +2024,25 @@ A model reaction
     <td><b>variable</b></td>
     <td>str</td>
     <td><i>SIdRef</i></td>
+ </tr>
+
+
+</table>
+
+## Notes
+### Allowed parameters
+<table>
+  <tr>
+    <td><b>xmlns</b></td>
+    <td>str</td>
+    <td><i></i></td>
+ </tr>
+
+
+  <tr>
+    <td><b>content</b></td>
+    <td>str</td>
+    <td><i></i></td>
  </tr>
 
 

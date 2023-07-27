@@ -1,12 +1,20 @@
 {
-    "sid": "sbml_example",
+    "sid": "sbml1",
+    "name": "my name is sbml doc",
+    "metaid": "zuckerberg",
     "sboTerm": "SBO:1234567",
+    "notes": {
+        "content": "\n    <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n    <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/strict.dtd\">\n    <html xmlns=\"http://www.w3.org/TR/xhtml1/strict\">\n        <head>\n            <title>A Small Document</title>\n        </head>\n        <body>\n            <p>A simple page!</p>\n        </body>\n    </html>"
+    },
+    "annotation": "<thing>minimum xml</thing>",
     "model": {
         "sid": "model1",
         "listOfFunctionDefinitions": [
             {
-                "sid": "my_func",
-                "math": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\"> <apply> <eq/> <apply> <plus/> <cn>2</cn> <cn>2</cn> </apply> <cn>4</cn> </apply> </math>"
+                "sid": "funcdef1",
+                "math": {
+                    "content": "<math> <lambda> <bvar><ci> x </ci></bvar> <apply> <power/> <ci> x </ci> <cn sbml:units=\"dimensionless\"> 3 </cn> </apply> </lambda> </math>"
+                }
             }
         ],
         "listOfUnitDefinitions": [

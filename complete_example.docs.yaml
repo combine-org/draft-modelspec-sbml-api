@@ -17,20 +17,31 @@ SBML:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
             description: XML content optional
+        xmlns:
+            type: str
+            description: '  string, fixed to "http://www.sbml.org/sbml/level3/version2/core"'
         level:
             type: str
-            description: '  SBML level   (must be 3)'
+            description: '  SBML level, fixed to 3'
         version:
             type: str
-            description: SBML version (must be 2)
+            description: SBML version, fixed to 2
         model:
             type: Model
             description: '  Optional model'
+Notes:
+    allowed_parameters:
+        xmlns:
+            type: str
+            description: ''
+        content:
+            type: str
+            description: ''
 Model:
     definition: The model
     allowed_parameters:
@@ -47,32 +58,32 @@ Model:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
             description: XML content optional
         substanceUnits:
             type: str
-            description: '  Optional substance units'
+            description: '  UnitSIdRef optional'
         timeUnits:
             type: str
-            description: '       Optional time units'
+            description: '       UnitSIdRef optional'
         volumeUnits:
             type: str
-            description: '     Optional volume units'
+            description: '     UnitSIdRef optional'
         areaUnits:
             type: str
-            description: '       Optional area units'
+            description: '       UnitSIdRef optional'
         lengthUnits:
             type: str
-            description: '     Optional length units'
+            description: '     UnitSIdRef optional'
         extentUnits:
             type: str
-            description: '     Optional extent units'
+            description: '     UnitSIdRef optional'
         conversionFactor:
             type: str
-            description: Optional conversion factor
+            description: SIdRef optional
     allowed_children:
         listOfFunctionDefinitions:
             type: List
@@ -107,9 +118,6 @@ Model:
 FunctionDefinition:
     definition: A function definition using MathML
     allowed_parameters:
-        sid:
-            type: str
-            description: '    SId optional'
         name:
             type: str
             description: '   string optional'
@@ -120,14 +128,25 @@ FunctionDefinition:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
             description: XML content optional
-        math:
+        sid:
             type: str
-            description: Optional function definition using MathML http://www.w3.org/1998/Math/MathML
+            description: '    SId optional'
+        math:
+            type: Math
+            description: MathML function definition optional
+Math:
+    allowed_parameters:
+        xmlns:
+            type: str
+            description: ''
+        content:
+            type: str
+            description: ''
 UnitDefinition:
     definition: A unit definition
     allowed_parameters:
@@ -144,7 +163,7 @@ UnitDefinition:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -170,7 +189,7 @@ Unit:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -204,7 +223,7 @@ Compartment:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -238,7 +257,7 @@ Species:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -283,7 +302,7 @@ Parameter:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -313,7 +332,7 @@ InitialAssignment:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -340,7 +359,7 @@ Rule:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -364,7 +383,7 @@ Constraint:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -391,7 +410,7 @@ Reaction:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -431,7 +450,7 @@ KineticLaw:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -458,7 +477,7 @@ LocalParameter:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -484,7 +503,7 @@ SpeciesReference:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -513,7 +532,7 @@ ModifierSpeciesReference:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -536,7 +555,7 @@ Event:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -572,7 +591,7 @@ Trigger:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -601,7 +620,7 @@ Priority:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -624,7 +643,7 @@ Delay:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
@@ -647,7 +666,7 @@ EventAssignment:
             type: str
             description: SBOTerm optional
         notes:
-            type: str
+            type: Notes
             description: '     XHTML 1.0 optional'
         annotation:
             type: str
