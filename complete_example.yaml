@@ -1,11 +1,42 @@
-sbml1:
-    model:
-        id: model1
-        listOfUnitDefinitions:
-            metres_per_second:
-                listOfUnits:
-                    unit1:
-                        kind: metre
-                    unit2:
-                        kind: second
-                        exponent: -1.0
+sid: sbml1
+name: my name is sbml doc
+metaid: zuckerberg
+sboTerm: SBO:1234567
+notes:
+    content: "\n    <html xmlns=\"http://www.w3.org/TR/xhtml1/strict\">\n        <head>\n\
+        \            <title>A Small Document</title>\n        </head>\n        <body>\n\
+        \            <p>A simple page!</p>\n        </body>\n    </html>"
+annotation: <thing>minimum xml</thing>
+model:
+    sid: model1
+    listOfFunctionDefinitions:
+    -   sid: funcdef1
+        math:
+            content: <math> <lambda> <bvar><ci> x </ci></bvar> <apply> <power/> <ci>
+                x </ci> <cn sbml:units="dimensionless"> 3 </cn> </apply> </lambda>
+                </math>
+    listOfUnitDefinitions:
+    -   sid: metres_per_second
+        listOfUnits:
+        -   kind: metre
+        -   kind: second
+            exponent: -1.0
+    listOfCompartments:
+    -   sid: compartment1
+        constant: true
+        spatialDimensions: 3.0
+        size: 2.798
+    listOfSpecies:
+    -   sid: species1
+        compartment: compartment1
+        hasOnlySubstanceUnits: false
+        boundaryCondition: false
+        constant: false
+    listOfParameters:
+    -   sid: parameter1
+        constant: false
+        value: 1.2345
+        units: meters_per_second
+    listOfInitialAssignments:
+    -   sid: initialAssignment1
+        symbol: parameter1
