@@ -3,7 +3,7 @@
 '''
 run via pytest (see run_all_test.sh)
 
-test if changing is to sid prevents the missing 'id' error
+test if changing id to sid prevents the missing 'id' error
 
 (yes it does)
 '''
@@ -52,7 +52,7 @@ def replicate_id_bug(sbml_sid=None,model_sid=None,unitdef_sid=None,unit_sid=None
     unit = Unit(sid=unit_sid)#error if no id set
     unitDef.listOfUnits.append(unit)
 
-    sbml_doc.to_json_file(f"test_sid.{fname}.json")
+    sbml_doc.to_json_file(f"untracked/test_sid.{fname}.json")
 
 def test1():
     'this passes'

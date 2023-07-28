@@ -9,6 +9,7 @@ based on sbml.level-3.version-2.core.release-2.pdf
 
 import json
 import yaml
+import os
 
 from sbml32spec import *
 
@@ -100,7 +101,8 @@ def test_complete_example():
     initialAssignment = InitialAssignment(sid="initialAssignment1",symbol="parameter1")
     model.listOfInitialAssignments.append(initialAssignment)
 
-    path = "complete_example"
+    path = "untracked/complete_example"
+    os.makedirs("untracked", exist_ok=True)
 
     sbml_doc.to_json_file(f"{path}.json")
     sbml_doc.to_yaml_file(f"{path}.yaml")

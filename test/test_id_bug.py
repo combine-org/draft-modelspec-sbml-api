@@ -86,7 +86,7 @@ def replicate_id_bug(sbml_id=None,model_id=None,unitdef_id=None,unit_id=None,fna
     unit = Unit(id=unit_id)#error if no id set
     unitDef.listOfUnits.append(unit)
 
-    sbml_doc.to_json_file(f"test_id_bug.{fname}.json")
+    sbml_doc.to_json_file(f"untracked/test_id_bug.{fname}.json")
 
 def test1():
     'this passes'
