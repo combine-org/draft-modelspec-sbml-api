@@ -77,19 +77,21 @@ http://www.sbml.org/sbml/level3/version2/core
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -268,19 +270,21 @@ The model
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -343,25 +347,29 @@ A function definition using MathML
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
 </table>
 
 ## Math
+Subset of MathML 2.0 used to define all formulae in SBML
+
 ### Allowed parameters
 <table>
   <tr>
@@ -441,19 +449,21 @@ A unit definition
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -537,19 +547,21 @@ A unit used to compose a unit definition. unit = (multiplier x 10^scale x kind)^
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -633,19 +645,21 @@ A compartment
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -757,19 +771,21 @@ A species: entities of the same kind participating in reactions within a specifi
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -846,19 +862,21 @@ A parameter
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -928,19 +946,21 @@ An initial assignment
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1003,19 +1023,21 @@ A rule, either algebraic, assignment or rate
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1085,19 +1107,21 @@ A model constraint
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1199,19 +1223,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1285,19 +1311,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1365,19 +1393,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1452,19 +1482,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1539,19 +1571,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1612,19 +1646,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1717,19 +1753,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1804,19 +1842,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1877,19 +1917,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -1950,19 +1992,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 
@@ -2030,19 +2074,21 @@ A model reaction
 </table>
 
 ## Notes
+XHTML field of SBase
+
 ### Allowed parameters
 <table>
   <tr>
     <td><b>xmlns</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str fixed "http://www.w3.org/1999/xhtml"</i></td>
  </tr>
 
 
   <tr>
     <td><b>content</b></td>
     <td>str</td>
-    <td><i></i></td>
+    <td><i>str valid XHTML</i></td>
  </tr>
 
 

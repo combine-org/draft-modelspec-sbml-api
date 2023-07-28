@@ -12,76 +12,25 @@ from modelspec import field, instance_of, optional
 from modelspec.base_types import Base
 from typing import List
 
-import re
-
-def valid_mathml(instance, attribute, value):
-    'http://www.w3.org/1998/Math/MathML'
-
-def xmlns_sbml(instance, attribute, value):
-    if value != "http://www.sbml.org/sbml/level3/version2/core":
-        raise ValueError("xmlns must be 'http://www.sbml.org/sbml/level3/version2/core'")
-
-def xmlns_notes(instance, attribute, value):
-    if value != "http://www.w3.org/1999/xhtml":
-        raise ValueError("xmlns must be 'http://www.w3.org/1999/xhtml'")
-
-def xmlns_math(instance, attribute, value):
-    if value != "http://www.w3.org/1998/Math/MathML":
-        raise ValueError("xmlns must be 'http://www.w3.org/1998/Math/MathML'")
-
-def fixed_level(instance, attribute, value):
-    if value != "3":
-        raise ValueError("this implementation only supports level 3")
-
-def fixed_version(instance, attribute, value):
-    if value != "2":
-        raise ValueError("this implementation only supports level 2")
-
-def valid_sid(instance, attribute, value):
-    if not re.fullmatch('[_A-Za-z][_A-Za-z0-9]*',value):
-        raise ValueError("an SId must match the regular expression: [_A-Za-z][_A-Za-z0-9]*")
-
-def valid_unitsid(instance, attribute, value):
-    if not re.fullmatch('[_A-Za-z][_A-Za-z0-9]*',value):
-        raise ValueError("a UnitSId must match the regular expression: [_A-Za-z][_A-Za-z0-9]*")
-
-def valid_sbo(instance, attribute, value):
-    if not re.fullmatch('SBO:[0-9]{7}',value):
-        raise ValueError("an SBOTerm must match the regular expression: SBO:[0-9]{7}")
-
-def valid_xml_id(instance,attribute,value):
-    'a valid XML 1.0 ID'
-    #not implemented yet: CombiningChar , Extender
-    #NameChar ::= letter | digit | '.' | '-' | '_' | ':' | CombiningChar | Extender
-    #ID ::= ( letter | '_' | ':' ) NameChar*
-
-    if not re.fullmatch('[A-Za-z_:][A-Za-z0-9\._:-]*',value):
-        raise ValueError("an SBOTerm must match the regular expression: SBO:[0-9]{7}")
-    
-def valid_xhtml(instance,attribute,value):
-    from lxml import etree
-    from io import StringIO
-    etree.parse(StringIO(value), etree.HTMLParser(recover=False))
-
-def valid_xml_content(instance,attribute,value):
-    'stub'
-
-    if not re.search('<.*>',value):
-        raise ValueError(f"{value} doesn't look like XML (this validator is only a stub)")
-
-def valid_mathml(instance,attribute,value):
-    'stub'
-
-    if not re.search('<math.*</math>',value):
-        raise ValueError(f"{value} doesn't look like MathML (this validator is only a stub)")
+from sbml_validators import *
 
 @modelspec.define
 class Notes(Base):
+    '''
+    XHTML field of SBase
+
+    Args:
+        xmlns: str fixed "http://www.w3.org/1999/xhtml"
+        content: str valid XHTML
+    '''
     xmlns: str = field(default="http://www.w3.org/1999/xhtml",validator=[instance_of(str),xmlns_notes])
     content: str = field(default=None,validator=optional([instance_of(str),valid_xhtml]))
 
 @modelspec.define
 class Math(Base):
+    '''
+    Subset of MathML 2.0 used to define all formulae in SBML
+    '''
     xmlns: str = field(default="http://www.w3.org/1998/Math/MathML",validator=[instance_of(str),xmlns_math])
     content: str = field(default=None,validator=optional([instance_of(str),valid_mathml]))
 

@@ -45,14 +45,15 @@
         }
     },
     "Notes": {
+        "definition": "XHTML field of SBase",
         "allowed_parameters": {
             "xmlns": {
                 "type": "str",
-                "description": ""
+                "description": "str fixed \"http://www.w3.org/1999/xhtml\""
             },
             "content": {
                 "type": "str",
-                "description": ""
+                "description": "str valid XHTML"
             }
         }
     },
@@ -189,6 +190,7 @@
         }
     },
     "Math": {
+        "definition": "Subset of MathML 2.0 used to define all formulae in SBML",
         "allowed_parameters": {
             "xmlns": {
                 "type": "str",

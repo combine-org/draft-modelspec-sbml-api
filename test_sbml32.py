@@ -7,30 +7,37 @@ https://github.com/combine-org/compbiolibs/issues/28
 based on sbml.level-3.version-2.core.release-2.pdf
 '''
 
+import json
+import yaml
+
 from sbml32spec import *
 
-def test_sbml():
-    #empty sbml with only defaults
+def test_sbml_empty():
+    'empty sbml with only defaults'
+
     sbml_doc = SBML()
 
-    assert sbml_doc.sid == None
-    assert sbml_doc.name == None
-    assert sbml_doc.metaid == None
-    assert sbml_doc.sboTerm == None
-    assert sbml_doc.notes == None
+    assert sbml_doc.sid        == None
+    assert sbml_doc.name       == None
+    assert sbml_doc.metaid     == None
+    assert sbml_doc.sboTerm    == None
+    assert sbml_doc.notes      == None
     assert sbml_doc.annotation == None
 
-    assert sbml_doc.xmlns == "http://www.sbml.org/sbml/level3/version2/core"
-    assert sbml_doc.level == "3"
+    assert sbml_doc.xmlns   == "http://www.sbml.org/sbml/level3/version2/core"
+    assert sbml_doc.level   == "3"
     assert sbml_doc.version == "2"
 
-    assert sbml_doc.model == None
+    assert sbml_doc.model   == None
 
-    #test with valid values
+def test_sbml_sid():
+    'test validation of SBML.sid values'
+
+    #valid values should be accepted
     for value in ["abc_123","A1B2C3_","_A_BC321"]:
         SBML(sid=value)
 
-    #test with invalid values
+    #invalid values should throw a ValueError
     for value in ["123","A.1","z:"]:
         try:
             SBML(sid=value)
@@ -44,12 +51,8 @@ def test_complete_example():
     not fully implemented yet
     '''
 
-    import json
-    import yaml
-
+    #a minimal exmaple xhtml document
     content='''
-    <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/strict.dtd">
     <html xmlns="http://www.w3.org/TR/xhtml1/strict">
         <head>
             <title>A Small Document</title>
@@ -113,5 +116,6 @@ def test_complete_example():
 
 if __name__ == "__main__":
 
-    test_sbml()
+    test_sbml_empty()
+    test_sbml_sid()
     test_complete_example()

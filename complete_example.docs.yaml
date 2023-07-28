@@ -35,13 +35,14 @@ SBML:
             type: Model
             description: '  Optional model'
 Notes:
+    definition: XHTML field of SBase
     allowed_parameters:
         xmlns:
             type: str
-            description: ''
+            description: str fixed "http://www.w3.org/1999/xhtml"
         content:
             type: str
-            description: ''
+            description: str valid XHTML
 Model:
     definition: The model
     allowed_parameters:
@@ -140,6 +141,7 @@ FunctionDefinition:
             type: Math
             description: MathML function definition optional
 Math:
+    definition: Subset of MathML 2.0 used to define all formulae in SBML
     allowed_parameters:
         xmlns:
             type: str

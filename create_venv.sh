@@ -22,5 +22,7 @@ cd ${REPO_PATH}
 rm -rf ./${VIRTENV_NAME}
 python3 -m venv ./${VIRTENV_NAME}
 source ./${VIRTENV_NAME}/bin/activate
+
+pip install ${REQUIRED_PIP_PACKAGES}
 cd ${MODELSPEC_PATH}
 pip install .

@@ -4,7 +4,4 @@
 # run all tests
 #
 
-for x in ./tests/test*.py
-do
-    ${x}
-done
+pytest #=D

@@ -24,14 +24,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 =====
 Model
@@ -78,14 +80,16 @@ Allowed child                  Data Type         Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ==================
 FunctionDefinition
@@ -109,18 +113,22 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ====
 Math
 ====
+Subset of MathML 2.0 used to define all formulae in SBML
+
 **Allowed parameters**
 
 ===============  ===========  =============
@@ -159,14 +167,16 @@ Allowed child    Data Type         Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ====
 Unit
@@ -193,14 +203,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ===========
 Compartment
@@ -227,14 +239,16 @@ Allowed field          Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 =======
 Species
@@ -265,14 +279,16 @@ Allowed field              Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 =========
 Parameter
@@ -298,14 +314,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 =================
 InitialAssignment
@@ -330,14 +348,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ====
 Rule
@@ -361,14 +381,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ==========
 Constraint
@@ -393,14 +415,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ========
 Reaction
@@ -436,14 +460,16 @@ Allowed child        Data Type         Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ==========
 KineticLaw
@@ -475,14 +501,16 @@ Allowed child              Data Type         Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ==============
 LocalParameter
@@ -505,14 +533,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ================
 SpeciesReference
@@ -536,14 +566,16 @@ Allowed field      Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ================
 SpeciesReference
@@ -567,14 +599,16 @@ Allowed field      Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ========================
 ModifierSpeciesReference
@@ -596,14 +630,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 =====
 Event
@@ -636,14 +672,16 @@ Allowed child               Data Type         Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 =======
 Trigger
@@ -667,14 +705,16 @@ Allowed field     Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ========
 Priority
@@ -696,14 +736,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 =====
 Delay
@@ -725,14 +767,16 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
 ===============
 EventAssignment
@@ -755,12 +799,14 @@ Allowed field    Data Type                                Description
 =====
 Notes
 =====
+XHTML field of SBase
+
 **Allowed parameters**
 
-===============  ===========  =============
+===============  ===========  ========================================
 Allowed field    Data Type    Description
-===============  ===========  =============
-**xmlns**        str
-**content**      str
-===============  ===========  =============
+===============  ===========  ========================================
+**xmlns**        str          str fixed "http://www.w3.org/1999/xhtml"
+**content**      str          str valid XHTML
+===============  ===========  ========================================
 
