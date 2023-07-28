@@ -1,0 +1,16 @@
+{
+    "sid": "sbml",
+    "model": {
+        "sid": "model",
+        "listOfUnitDefinitions": [
+            {
+                "sid": "unitdef",
+                "listOfUnits": [
+                    {
+                        "sid": "unit"
+                    }
+                ]
+            }
+        ]
+    }
+}

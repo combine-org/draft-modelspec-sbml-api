@@ -1,0 +1,14 @@
+{
+    "sbml": {
+        "model": {
+            "id": "model",
+            "listOfUnitDefinitions": {
+                "unitdef": {
+                    "listOfUnits": {
+                        "unit": {}
+                    }
+                }
+            }
+        }
+    }
+}

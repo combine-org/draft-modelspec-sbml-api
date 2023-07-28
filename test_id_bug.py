@@ -43,16 +43,15 @@ from modelspec import field, instance_of, optional
 from modelspec.base_types import Base
 from typing import List
 
-
-
-def replicate_id_bug(sbml_id=None,model_id=None,unitdef_id=None,unit_id=None):
+def replicate_id_bug(sbml_id=None,model_id=None,unitdef_id=None,unit_id=None,fname=""):
     '''
     minimal replication of the missing 'id' error
     error happens when trying to write to json file
     whereever an item with no id set is part of a list
     even if it's the only item in the list
+    items not in lists do not generate the error if their id is unset
 
-    so: unitDef, unit1 and unit2 must have an id set
+    so: unitDef and unit have an id set to avoid the error (although id is supposed to be optional in SBML)
     whereas sbml and model do not need it to be set
     '''
 
@@ -87,24 +86,24 @@ def replicate_id_bug(sbml_id=None,model_id=None,unitdef_id=None,unit_id=None):
     unit = Unit(id=unit_id)#error if no id set
     unitDef.listOfUnits.append(unit)
 
-    sbml_doc.to_json_file("test_id_bug.json")
+    sbml_doc.to_json_file(f"test_id_bug.{fname}.json")
 
 def test1():
     'this passes'
-    replicate_id_bug(sbml_id="sbml",model_id="model",unitdef_id="unitdef",unit_id="unit")
+    replicate_id_bug(sbml_id="sbml",model_id="model",unitdef_id="unitdef",unit_id="unit",fname="test1")
 
 def test2():
     'this passes'
-    replicate_id_bug(sbml_id=None,model_id="model",unitdef_id="unitdef",unit_id="unit")
+    replicate_id_bug(sbml_id=None,model_id="model",unitdef_id="unitdef",unit_id="unit",fname="test2")
 
 def test3():
     'this passes'
-    replicate_id_bug(sbml_id="sbml",model_id=None,unitdef_id="unitdef",unit_id="unit")
+    replicate_id_bug(sbml_id="sbml",model_id=None,unitdef_id="unitdef",unit_id="unit",fname="test3")
 
 def test4():
     'this fails'
-    replicate_id_bug(sbml_id="sbml",model_id="model",unitdef_id=None,unit_id="unit")
+    replicate_id_bug(sbml_id="sbml",model_id="model",unitdef_id=None,unit_id="unit",fname="test4")
 
 def test5():
     'this fails'
-    replicate_id_bug(sbml_id="sbml",model_id="model",unitdef_id="unitdef",unit_id=None)
+    replicate_id_bug(sbml_id="sbml",model_id="model",unitdef_id="unitdef",unit_id=None,fname="test5")
