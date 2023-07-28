@@ -19,19 +19,10 @@ from typing import List
 @modelspec.define
 class SBase(Base):
     id:     str = field(default=None,validator=optional(instance_of(str)))
-    name:    str = field(default=None,validator=optional(instance_of(str)))
-    metaid:  str = field(default=None,validator=optional(instance_of(str)))
-    sboTerm: str = field(default=None,validator=optional(instance_of(str)))
-
-    notes:      str = field(default=None,validator=optional(instance_of(str)))
-    annotation: str = field(default=None,validator=optional(instance_of(str)))
 
 @modelspec.define
 class Unit(SBase):
-    kind:       str = field(default=None,validator=instance_of(str))
-    exponent:   str = field(default=1.0, validator=instance_of(float))
-    scale:      str = field(default=0,   validator=instance_of(int))
-    multiplier: str = field(default=1.0, validator=instance_of(float))
+    pass
 
 @modelspec.define
 class UnitDefinition(SBase):
@@ -43,13 +34,7 @@ class Model(SBase):
 
 @modelspec.define
 class SBML(SBase):
-
-    xmlns:   str = field(default=None,validator=optional(instance_of(str)))
-    level:   str = field(default=None,validator=optional(instance_of(str)))
-    version: str = field(default=None,validator=optional(instance_of(str)))
-
     model: Model = field(default=None, validator=optional(instance_of(Model)))
-
 
 def replicate_id_bug():
     '''
@@ -62,8 +47,8 @@ def replicate_id_bug():
 
     #unit definition list
     unitDef = UnitDefinition(id="metres_per_second")
-    unit1 = Unit(kind="metre")
-    unit2 = Unit(id="unit2",kind="second",exponent=-1.0)
+    unit1 = Unit()
+    unit2 = Unit(id="unit2")
     unitDef.listOfUnits.append(unit1)
     unitDef.listOfUnits.append(unit2)
     model.listOfUnitDefinitions.append(unitDef)
