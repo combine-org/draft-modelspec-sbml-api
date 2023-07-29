@@ -1,1 +1,1 @@
-This folder contains tests used to probe some bugs I encountered and are not all required to pass as such. At least two are demonstrating bugs that are expected to happen: specifically test_id_bug.py:test4() and test5()
+This folder contains tests used to probe some bugs I encountered and are not all required to pass as such. At least two are demonstrating bugs that are expected to happen: specifically test_id_bug.py:test4() and test5(). The main tests for checking the evolving SBML3.2 modelspec implementation are in test_sbml32.py
