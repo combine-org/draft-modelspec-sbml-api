@@ -13,6 +13,25 @@ import os
 
 from sbml32spec import *
 
+def test_minimal_example():
+    path = "untracked/test_minimal_example"
+
+    sbml_doc = SBML()
+    open(f"{path}.docs.json", "w").write(json.dumps(sbml_doc.generate_documentation(format="dict"), indent=4))
+    
+    model = Model()
+    sbml_doc.model = model
+
+    unit_def = UnitDefinition()
+    model.listOfUnitDefinitions.append(unit_def)
+
+    unit1 = Unit()
+    unit2 = Unit()
+    unit_def.listOfUnits.append(unit1)
+    unit_def.listOfUnits.append(unit2)
+
+    sbml_doc.to_json_file(f"{path}.json")
+
 def test_sbml_empty():
     'empty sbml with only defaults'
 
@@ -118,6 +137,8 @@ def test_complete_example():
 
 if __name__ == "__main__":
 
-    test_sbml_empty()
-    test_sbml_sid()
-    test_complete_example()
+    test_minimal_example()
+
+    #test_sbml_empty()
+    #test_sbml_sid()
+    #test_complete_example()
