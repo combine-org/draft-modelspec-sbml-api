@@ -16,23 +16,22 @@ from sbml32spec import *
 def test_example_sbml_minimal():
     'aiming to eventually match the xml file example_sbml_minimal.xml'
 
-    path = "untracked/test_minimal_example"
+    path = "test_minimal_example"
 
     sbml_doc = SBML()
     #open(f"{path}.docs.json", "w").write(json.dumps(sbml_doc.generate_documentation(format="dict"), indent=4))
     
-    model = Model(sid="test_model")
+    model = Model(substanceUnits="mole",timeUnits="second",extentUnits="mole")
     sbml_doc.model = model
 
-    unit_def = UnitDefinition(sid="unit_def")
+    unit_def = UnitDefinition(sid="per_second")
     model.listOfUnitDefinitions.append(unit_def)
 
-    unit1 = Unit(kind="ampere")
-    unit2 = Unit(kind="watt")
-    unit_def.listOfUnits.append(unit1)
-    unit_def.listOfUnits.append(unit2)
+    unit = Unit(kind="second",exponent=-1.0)
+    unit_def.listOfUnits.append(unit)
 
-    sbml_doc.to_xml_file(f"{path}.json")
+    sbml_doc.to_json_file(f"{path}.json")
+    sbml_doc.to_xml_file(f"{path}.xml")
 
 def test_minimal_example():
     path = "untracked/test_minimal_example"
