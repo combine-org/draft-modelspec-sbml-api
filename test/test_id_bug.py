@@ -3,6 +3,8 @@
 '''
 run via pytest (see run_all_test.sh)
 
+tests test4 and test5 are EXPECTED to fail to demonstrate the bug
+
 a minimalist replication of a bug where an unset (optional) id causes an error when trying to write to json
 
 the error will be like to this

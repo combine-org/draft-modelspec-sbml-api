@@ -11,6 +11,16 @@ below SubRule must be set to kw_only=True otherwise the above mentioned error oc
 this seems to be the preferred way to handle this case
 my other workaround was to set default=None to everything
 making the offending attribute optional does not fix the problem
+
+the kw_only=True setting allows the below fragment of SBML spec to be parsed by python
+but another error happens when objects are created using it, see test_sbase.py
+
+in summary it looks like we need to keep using the default=None fix
+rather than kw_only=True as the later only allows the spec to be defined without error
+but seems not to allow kw_only attributes to be optional
+it seems to effectively force them to be required unless default=None is also added
+therefore kw_only option does not actually help out at all
+and just using default=None seems to fix everything
 '''
 
 import modelspec
