@@ -290,7 +290,7 @@ class Unit(SBase):
         multiplier: double
     """
 
-    kind:       str = field(default=None,validator=instance_of(str))
+    kind:       str = field(default=None,validator=[instance_of(str),valid_kind])
     exponent:   str = field(default=1.0, validator=instance_of(float))
     scale:      str = field(default=0,   validator=instance_of(int))
     multiplier: str = field(default=1.0, validator=instance_of(float))
@@ -301,9 +301,11 @@ class UnitDefinition(SBase):
     A unit definition
 
     Args:
+        sid: UnitSid required (overrides SBase sid)
         listOfUnits: List of units used to compose the definition
     """
 
+    sid:     str = field(default=None,validator=[instance_of(str),valid_unitsid])
     listOfUnits: List[Unit] = field(factory=list)
 
 @modelspec.define

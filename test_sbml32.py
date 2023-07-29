@@ -13,6 +13,27 @@ import os
 
 from sbml32spec import *
 
+def test_example_sbml_minimal():
+    'aiming to eventually match the xml file example_sbml_minimal.xml'
+
+    path = "untracked/test_minimal_example"
+
+    sbml_doc = SBML()
+    #open(f"{path}.docs.json", "w").write(json.dumps(sbml_doc.generate_documentation(format="dict"), indent=4))
+    
+    model = Model(sid="test_model")
+    sbml_doc.model = model
+
+    unit_def = UnitDefinition(sid="unit_def")
+    model.listOfUnitDefinitions.append(unit_def)
+
+    unit1 = Unit(kind="ampere")
+    unit2 = Unit(kind="watt")
+    unit_def.listOfUnits.append(unit1)
+    unit_def.listOfUnits.append(unit2)
+
+    sbml_doc.to_xml_file(f"{path}.json")
+
 def test_minimal_example():
     path = "untracked/test_minimal_example"
 
@@ -22,11 +43,11 @@ def test_minimal_example():
     model = Model()
     sbml_doc.model = model
 
-    unit_def = UnitDefinition()
+    unit_def = UnitDefinition(sid="unit_def")
     model.listOfUnitDefinitions.append(unit_def)
 
-    unit1 = Unit()
-    unit2 = Unit()
+    unit1 = Unit(kind="ampere")
+    unit2 = Unit(kind="watt")
     unit_def.listOfUnits.append(unit1)
     unit_def.listOfUnits.append(unit2)
 
@@ -136,9 +157,8 @@ def test_complete_example():
     open(f"{path}.docs.yaml", "w").write(yaml.dump(doc_dict, indent=4, sort_keys=False))
 
 if __name__ == "__main__":
-
-    test_minimal_example()
-
+    test_example_sbml_minimal()
+    #test_minimal_example()
     #test_sbml_empty()
     #test_sbml_sid()
     #test_complete_example()

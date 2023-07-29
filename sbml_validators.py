@@ -14,6 +14,10 @@ ampere coulomb gray joule litre mole radian steradian weber avogadro dimensionle
 second tesla becquerel farad hertz kelvin lux ohm siemens volt candela gram item kilogram metre pascal sievert watt
 '''.split()
 
+def valid_kind(instance, attribute, value):
+    if not value in sbml_si_units:
+        raise ValueError(f"kind {value} must be one of the standard SI units: {sbml_si_units}")
+
 def valid_mathml(instance, attribute, value):
     'http://www.w3.org/1998/Math/MathML'
 
@@ -40,6 +44,11 @@ def fixed_version(instance, attribute, value):
 def valid_sid(instance, attribute, value):
     if not re.fullmatch('[_A-Za-z][_A-Za-z0-9]*',value):
         raise ValueError("an SId must match the regular expression: [_A-Za-z][_A-Za-z0-9]*")
+
+def valid_unitsid(instance, attribute, value):
+    'same as sid except has a separate namespace'
+    if not re.fullmatch('[_A-Za-z][_A-Za-z0-9]*',value):
+        raise ValueError("a UnitSId must match the regular expression: [_A-Za-z][_A-Za-z0-9]*")
 
 def valid_unitsid(instance, attribute, value):
     if not re.fullmatch('[_A-Za-z][_A-Za-z0-9]*',value):
