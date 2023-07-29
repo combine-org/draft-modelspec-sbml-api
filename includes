@@ -1,4 +1,6 @@
+
 export REPO_NAME=draft-modelspec-sbml-api
 export VIRTENV_NAME=virtenv
 export MODELSPEC_PATH=${HOME}/repos/modelspec
 export REQUIRED_PIP_PACKAGES="pytest lxml"
+export VIRT_ENV=$(python3 -c 'import sys ; print("/".join(sys.prefix.split("/")[-2:]))')
